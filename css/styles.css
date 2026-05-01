@@ -1,0 +1,649 @@
+/* 
+=== COLOR PALETTE REFERENCE ===
+This palette creates a nature-inspired, eco-friendly theme perfect for environmental websites.
+All colors are carefully chosen for accessibility and visual harmony.
+
+Name	        Hex	        RGB Values	        Use Suggestion
+Amazon	        #377658	    55, 118, 88	        Primary buttons, headers, accents, main branding
+Celeste	        #d0d5cd	    208, 213, 205	    Backgrounds, containers, soft UI elements
+Shadow Green	#90c8b1	    144, 200, 177	    Secondary elements, hover states, highlights
+Moss Green	    #4e7d6a	    78, 125, 106	    Text or nav contrast on light backgrounds
+Bone White	    #f5f7f4	    245, 247, 244	    Page background, padding contrast
+Mint Cream	    #f0f9f6	    240, 249, 246	    Section highlights, banner backgrounds, body background
+*/
+
+/* ===========================================
+   GLOBAL STYLES AND RESETS
+   =========================================== */
+
+/**
+ * Universal reset - removes default browser styling and applies consistent font
+ * This ensures cross-browser compatibility and a clean starting point
+ */
+* {
+  font-family: "Open Sans", sans-serif; /* Clean, readable sans-serif font */
+  padding: 0;
+  margin: 0;
+  list-style-type: none; /* Removes bullets from all lists */
+}
+
+/**
+ * Body background - uses mint cream for a soft, welcoming feel
+ * This light background provides good contrast for content
+ */
+body {
+  background: #f0f9f6;
+}
+
+/**
+ * Global link styling - maintains brand consistency across all links
+ * Amazon green for normal state, Shadow green for hover
+ */
+a {
+  color: #377658; /* Amazon green for brand consistency */
+  text-decoration: none; /* Clean look without underlines */
+}
+a:hover {
+  color: #90c8b1; /* Lighter green on hover for feedback */
+}
+
+/**
+ * Default text alignment for divs
+ * Creates centered layout foundation for most content
+ */
+div {
+  text-align: center;
+}
+
+/* ===========================================
+   HEADER AND NAVIGATION STYLES
+   =========================================== */
+
+/**
+ * Hero banner with background image overlay
+ * Creates impactful first impression with nature imagery
+ * Height: 300px provides good visual impact without overwhelming content
+ */
+.banner {
+  background: url(../pictures/pexels-pixabay-158780.jpg) center; /* Source: https://www.pexels.com/ */
+  background-size: cover; /* Ensures image fills container while maintaining aspect ratio */
+  height: 300px; /* Fixed height for consistent layout */
+  color: #f0f9f6; /* Light text for contrast against dark image */
+  text-align: center;
+  font-size: xx-large; /* Large text for hero impact */
+  text-shadow: 4px 4px 7px black; /* Ensures text readability over image */
+  overflow: hidden; /* Prevents content spillover */
+  position: relative; /* Enables absolute positioning of pseudo-elements */
+}
+
+/**
+ * Gradient overlay at bottom of banner
+ * Creates smooth visual transition from banner to page content
+ * Prevents harsh cutoff between banner and body background
+ */
+.banner::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 70%, #f0f9f6 100%);
+  pointer-events: none; /* Allows clicking through overlay to banner content */
+}
+
+/**
+ * Page title styling within header sections
+ * Uses Shadow Green for subtle but visible page identification
+ */
+header h2 {
+  color: #90c8b1;
+}
+
+/**
+ * Navigation container
+ * Fixed height ensures consistent spacing across all pages
+ */
+nav {
+  height: 60px;
+  text-align: left; /* Aligns hamburger menu to left side */
+}
+
+/**
+ * Hamburger menu icon - mobile-first navigation approach
+ * Creates accessible, space-efficient navigation for all screen sizes
+ */
+.hamburger {
+  display: flex;
+  flex-direction: column; /* Stacks the three lines vertically */
+  justify-content: space-between; /* Equal spacing between lines */
+  width: 15px; /* Compact size */
+  height: 15px;
+  cursor: pointer; /* Indicates clickable element */
+  margin-left: 10px;
+  margin-top: 10px;
+  background-color: #ffffff; /* White circle background for visibility */
+  padding: 10px; /* Creates clickable area larger than visual element */
+  border-radius: 50%; /* Creates circular background */
+  transition: transform 0.3s ease; /* Smooth hover animation */
+}
+
+/**
+ * Hamburger hover effect - provides user feedback
+ * Slight scale increase indicates interactivity
+ */
+.hamburger:hover {
+  transform: scale(1.1); /* 10% size increase on hover */
+}
+
+/**
+ * Individual hamburger menu lines
+ * Three spans create the classic "☰" hamburger icon
+ */
+.hamburger span {
+  display: block;
+  height: 3px; /* Thin lines for clean appearance */
+  background-color: #377658; /* Amazon green for brand consistency */
+  border-radius: 2px; /* Slightly rounded ends for softer look */
+}
+
+/**
+ * Remove default details/summary markers
+ * Creates cleaner custom dropdown appearance
+ */
+summary {
+  list-style: none;
+}
+summary::-webkit-details-marker {
+  display: none; /* Removes default triangle in WebKit browsers */
+}
+
+/**
+ * Dropdown navigation menu styling
+ * Appears when hamburger menu is clicked
+ */
+ul.dropdown li a {
+  text-decoration: none;
+  color: #f0f9f6; /* Light color for visibility over dark backgrounds */
+  font-size: 20px; /* Large enough for easy clicking/tapping */
+  text-align: center;
+  text-shadow: 4px 4px 7px black; /* Matches banner text shadow for consistency */
+  margin-left: 50px; /* Indentation for visual hierarchy */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover transitions */
+  display: inline-block; /* Allows transform effects */
+}
+
+/**
+ * Navigation link hover effects
+ * Provides clear feedback for interactive elements
+ */
+.dropdown li a:hover {
+  background-color: #4caf50; /* Bright green background on hover */
+  color: white; /* High contrast text */
+  transform: scale(1.1); /* Slight size increase for emphasis */
+}
+
+/* ===========================================
+   TYPOGRAPHY AND HEADINGS
+   =========================================== */
+
+/**
+ * Main section headings (h3)
+ * Creates consistent section breaks with decorative underlines
+ * Used for major content sections throughout the site
+ */
+h3 {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #377658; /* Amazon green for brand consistency */
+  margin: 0 auto;
+  position: relative; /* Enables absolute positioning of pseudo-element underline */
+}
+
+/**
+ * Decorative underline for h3 headings
+ * Creates visual emphasis and brand consistency
+ */
+h3::after {
+  content: "";
+  position: absolute;
+  width: 80px; /* Fixed width for consistent appearance */
+  height: 3px; /* Thin line for subtle emphasis */
+  background-color: #90c8b1; /* Shadow green complements heading color */
+  bottom: -10px; /* Positions below heading text */
+  left: 50%;
+  transform: translateX(-50%); /* Centers underline regardless of text length */
+}
+
+/**
+ * Subsection headings (h4)
+ * Secondary hierarchy level with matching underline style
+ */
+h4 {
+  font-size: 20px; /* Smaller than h3 for proper hierarchy */
+  margin: 10px;
+  position: relative; /* Enables pseudo-element positioning */
+}
+
+/**
+ * Decorative underline for h4 headings
+ * Matches h3 styling for visual consistency
+ */
+h4::after {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 3px;
+  background-color: #90c8b1;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/**
+ * Descriptive text styling
+ * Used for subtitle or explanatory text below headings
+ */
+.desc {
+  text-align: center;
+  color: #377658; /* Maintains brand color consistency */
+  margin: 20px auto; /* Vertical spacing from surrounding content */
+  text-decoration: underline; /* Emphasizes descriptive nature */
+}
+
+/* ===========================================
+   HOME PAGE SPECIFIC STYLES
+   =========================================== */
+
+/**
+ * Flexible container for home page content cards
+ * Responsive layout that adapts to different screen sizes
+ * Used primarily for the "5 R's of zero waste" content sections
+ */
+.content-flex {
+  display: flex;
+  flex-wrap: wrap; /* Allows cards to wrap to new lines on smaller screens */
+  gap: 20px; /* Consistent spacing between cards */
+  margin: 20px; /* Outer margin for page breathing room */
+}
+
+/**
+ * Individual content cards - "5 R's of zero waste" sections
+ * Responsive design: 2 columns on desktop, stacks on mobile
+ * Each card represents one of the 5 R's with hover interactions
+ */
+.contentone {
+  color: #377658; /* Dark green text for readability */
+  background-color: #f5f7f4; /* Bone white background for contrast */
+  margin: 20px auto;
+  border-radius: 10px; /* Soft corners for modern appearance */
+  transition: transform 0.3s ease; /* Smooth hover animation */
+  box-shadow: 0px 0px 5px #4e7d6a; /* Moss green shadow for depth */
+  flex: 1 1 calc(50% - 20px); /* Responsive: 50% width minus gap, flexible growth/shrink */
+  box-sizing: border-box; /* Includes padding/border in width calculation */
+  padding: 15px;
+  max-width: 500px; /* Prevents cards from becoming too wide on large screens */
+  min-width: 100px; /* Ensures usability on very small screens */
+  max-height: 300px; /* Consistent card height for uniform appearance */
+}
+
+/**
+ * Content card hover effect
+ * Creates engaging micro-interaction that draws attention
+ */
+.contentone:hover {
+  transform: translateY(-10px); /* Lifts card upward for "floating" effect */
+}
+
+/**
+ * Statistics graphs container
+ * Displays data visualizations in a row layout
+ * Used for environmental impact charts and statistics
+ */
+.fig {
+  display: flex;
+  justify-content: space-evenly; /* Equal spacing between graph elements */
+  flex-direction: row; /* Horizontal layout */
+}
+
+/**
+ * Image hover effects for figures
+ * Adds interactivity to statistical charts and informational images
+ */
+figure img {
+  transition: transform 0.3s ease; /* Smooth animation */
+  border-radius: 20px; /* Rounded corners for modern appearance */
+}
+figure img:hover {
+  transform: translateY(-10px); /* Consistent hover effect with content cards */
+}
+
+/**
+ * Specific styling for the 5 R's triangle diagram
+ * Featured image showing the waste reduction hierarchy
+ */
+#imageone {
+  transition: transform 0.3s ease;
+  margin: auto; /* Centers the image */
+}
+#imageone:hover {
+  transform: scale(1.1); /* Scale hover effect instead of translate for variety */
+}
+
+/* ===========================================
+   EMBEDDED CONTENT STYLING
+   =========================================== */
+
+/**
+ * YouTube video embedding container
+ * Houses educational videos about zero waste and sustainability
+ * Border and background create defined content area
+ */
+#embedvids {
+  display: flex;
+  flex-direction: row; /* Side-by-side video layout */
+  justify-content: space-evenly; /* Equal spacing between videos */
+  border: 10px solid #377658; /* Thick Amazon green border for emphasis */
+  padding: 20px; /* Internal spacing around videos */
+  background: #f5f7f4; /* Bone white background for contrast */
+  border-radius: 5px; /* Slightly rounded corners */
+  margin: 20px; /* External spacing from other content */
+}
+
+/**
+ * Video iframe styling
+ * Rounds corners of embedded YouTube videos for consistency
+ */
+#embedvids iframe {
+  border-radius: 10px; /* Matches other rounded elements on site */
+}
+
+/* ===========================================
+   CONTENT SECTIONS AND INTERACTIVE ELEMENTS
+   =========================================== */
+
+/**
+ * Container for expandable details sections
+ * Used for Ireland legislation information with show/hide functionality
+ * Desktop-focused layout with specific margins for optimal reading width
+ */
+#irleg {
+  display: flex;
+  flex-direction: row;
+  margin-left: 200px; /* Desktop-centered layout for readability */
+  margin-right: 200px; /* Prevents overly wide text lines */
+  justify-content: center;
+}
+
+/**
+ * Clickable summary styling for expandable details
+ * Provides clear indication of interactive elements
+ */
+#irleg details summary {
+  color: #377658; /* Amazon green for brand consistency */
+  text-decoration: underline; /* Indicates clickable nature */
+  transition: transform 0.3s ease; /* Smooth hover animation */
+  margin: 0px 223px 0px 223px; /* Specific spacing for layout alignment */
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+}
+
+/**
+ * Summary hover effects
+ * Provides feedback for interactive details elements
+ */
+#irleg details summary:hover {
+  color: #4caf50; /* Brighter green for hover state */
+  transform: translateY(-2px); /* Subtle upward movement */
+}
+
+/**
+ * Expanded content styling for details
+ * Contains detailed information about Irish environmental legislation
+ * Fixed height ensures consistent layout when expanded
+ */
+.irlegdrop {
+  border: 5px solid #377658; /* Amazon green border for definition */
+  background-color: #b2db9b; /* Light green background for content area */
+  padding: 20px 10px 20px 20px; /* Asymmetric padding for text alignment */
+  width: 560px; /* Fixed width for consistent layout */
+  border-radius: 20px; /* Rounded corners for modern appearance */
+  display: flex;
+  flex-direction: column; /* Vertical content stacking */
+  height: 700px; /* Fixed height for consistent layout when expanded */
+  color: #377658; /* Dark green text for readability */
+  margin: 0 auto; /* Centers the expanded content */
+  justify-content: space-evenly; /* Equal spacing between content elements */
+}
+
+/**
+ * Images within expanded details
+ * Provides visual breathing room around informational images
+ */
+.irlegdrop img {
+  margin: 20px auto; /* Centers images with vertical spacing */
+}
+
+/* ===========================================
+   ASPIRATIONS PAGE SPECIFIC STYLES
+   =========================================== */
+
+/**
+ * Challenges section horizontal layout
+ * Displays environmental challenges in a structured format
+ * Desktop-optimized with margins for optimal reading experience
+ */
+#challengessort {
+  display: flex;
+  flex-direction: row; /* Horizontal layout for challenge content */
+  background-color: #f5f7f4; /* Bone white background */
+  margin-left: 140px; /* Desktop margins for readability - prevents overly wide text */
+  margin-right: 140px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  box-shadow: 0px 0px 5px black; /* Subtle shadow for depth */
+  border-radius: 20px; /* Rounded corners for modern appearance */
+  padding: 30px; /* Internal spacing for content */
+}
+
+/**
+ * Content alignment container for goals and solutions
+ * Creates balanced layout between text and visual elements
+ */
+.contentalign {
+  display: flex;
+  flex-direction: row; /* Side-by-side layout */
+  justify-content: center; /* Centers content within container */
+  background-color: #f5f7f4; /* Bone white background for consistency */
+  padding: 10px;
+  margin-left: 150px; /* Desktop margins for optimal reading width */
+  margin-right: 150px;
+  border-radius: 5px; /* Subtle rounded corners */
+  box-shadow: 0px 0px 5px black; /* Depth through shadow */
+}
+
+/**
+ * Figure styling within content alignment
+ * Ensures consistent spacing and color for image captions and content
+ */
+.contentalign figure {
+  color: #377658; /* Amazon green text for consistency */
+  width: 50%; /* Equal width distribution in two-column layout */
+}
+
+/* ===========================================
+   ABOUT ME PAGE SPECIFIC STYLES
+   =========================================== */
+
+/**
+ * Main content sections on about me page
+ * Primary container for personal information and introduction
+ */
+#firstpart {
+  display: flex;
+  flex-direction: column; /* Vertical stacking of content */
+  border: 5px solid #377658; /* Amazon green border for definition */
+  margin: 20px 200px 20px 200px; /* Desktop-centered with breathing room */
+  border-radius: 10px; /* Rounded corners for modern appearance */
+  background-color: #f5f7f4; /* Bone white background */
+  box-shadow: 0px 0px 5px #4e7d6a; /* Moss green shadow for depth */
+}
+
+/**
+ * Introduction section layout
+ * Combines profile image with personal introduction text
+ */
+.intro {
+  display: flex;
+  justify-content: left; /* Left-aligned for natural reading flow */
+  flex-direction: row; /* Side-by-side image and text */
+  margin: 30px auto; /* Generous spacing for comfortable reading */
+}
+
+/**
+ * Profile picture styling
+ * Creates appealing circular profile image with brand-colored border
+ */
+.intro #picone {
+  border-radius: 70%; /* Near-circular appearance (70% creates slight oval) */
+  border: 5px solid #4caf50; /* Bright green border for emphasis */
+  margin-left:100px;
+}
+
+/**
+ * About me content paragraphs
+ * Individual content sections with hover interactions
+ */
+.aboutmecontent {
+  margin: 10px 100px 40px 100px; /* Asymmetric margin for visual hierarchy */
+  background-color: #90c8b1; /* Shadow green background */
+  color: #377658; /* Amazon green text for readability */
+  border-radius: 5px; /* Subtle rounded corners */
+  transition: transform 0.3s ease; /* Smooth hover animation */
+  width: 400px; /* Fixed width for consistent layout */
+  padding: 20px; /* Internal spacing for content */
+}
+
+/**
+ * Hover effect for about me content
+ * Creates engaging interaction for personal content sections
+ */
+.aboutmecontent:hover {
+  transform: translateY(-10px); /* Upward floating effect */
+}
+
+/**
+ * Green hacks section container
+ * Houses environmental tips and sustainable living advice
+ */
+.greenhacks {
+  border: 5px solid #377658; /* Amazon green border for definition */
+  border-radius: 5px; /* Subtle rounded corners */
+  margin: 10px 200px 10px 200px; /* Desktop-centered layout */
+  background-color: #f5f7f4; /* Bone white background */
+  box-shadow: 0px 0px 5px #4e7d6a; /* Moss green shadow for depth */
+}
+
+/**
+ * First row of green hacks
+ * Horizontal layout for the first set of environmental tips
+ */
+.greenhacks #greenhacksalign .firstrow {
+  display: flex;
+  justify-content: center; /* Centers content within row */
+  flex-direction: row; /* Horizontal arrangement */
+}
+
+/**
+ * Second row of green hacks  
+ * Continues the grid layout for additional environmental tips
+ */
+.greenhacks #greenhacksalign .secondrow {
+  display: flex;
+  justify-content: center; /* Centers content within row */
+}
+
+/**
+ * Green hacks section heading spacing
+ * Provides generous margin for section title
+ */
+.greenhacks h4 {
+  margin: 50px; /* Large margin for emphasis and breathing room */
+}
+
+/* ===========================================
+   SHARED CONTENT STYLES
+   =========================================== */
+
+/**
+ * Generic content section styling
+ * Used for informational paragraphs throughout the site
+ * Left border accent creates visual interest and hierarchy
+ */
+.contentrest .skip p {
+  margin: 20px auto;
+  padding: 10px;
+  background-color: #b2db9b; /* Light green background */
+  border-left: 10px solid #4e7d6a; /* Moss green accent border */
+  border-radius: 10px; /* Rounded corners for modern appearance */
+  box-shadow: 0px 0px 5px black; /* Subtle shadow for depth */
+  width: 80%; /* Responsive width for readability */
+}
+
+/**
+ * Secondary content styling for lists
+ * Alternative background color for content variety
+ * Used for lists and secondary information
+ */
+.skip2 {
+  margin: 20px auto;
+  padding: 10px;
+  background-color: #f0f9f6; /* Mint cream background */
+  border-radius: 10px; /* Consistent rounded corners */
+  box-shadow: 0px 0px 5px black; /* Depth through shadow */
+  color: #377658; /* Amazon green text */
+  padding-top: 5%; /* Extra top padding for visual balance */
+}
+
+/* ===========================================
+   FOOTER STYLES
+   =========================================== */
+
+/**
+ * Main footer styling
+ * Site-wide footer with consistent branding and functionality
+ * Contains navigation and "back to top" functionality
+ */
+footer {
+  background: #90c8b1; /* Shadow green background */
+  text-align: center;
+  margin: 0px;
+  margin-top: 20px; /* Separation from main content */
+  border-radius: 10px; /* Rounded corners for consistency */
+  box-shadow: 0px 0px 5px #4e7d6a; /* Moss green shadow for depth */
+  color: #377658; /* Amazon green text */
+  text-shadow: 0px 0px 7px #4e7d6a; /* Subtle text shadow for readability */
+}
+
+/**
+ * "Back to Top" button styling
+ * Provides easy navigation back to page header
+ * Contrasting colors for clear call-to-action
+ */
+footer button {
+  background-color: #4e7d6a; /* Moss green background */
+  border-radius: 10px; /* Rounded corners for consistency */
+  color: #90c8b1; /* Shadow green text for contrast */
+  padding: 10px; /* Comfortable click target size */
+  transition: transform 0.3s ease; /* Smooth hover animation */
+}
+
+/**
+ * Footer button hover effect
+ * Provides clear feedback for interactive element
+ */
+footer button:hover {
+  transform: scale(1.1); /* 10% size increase for emphasis */
+}
